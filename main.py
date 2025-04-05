@@ -384,9 +384,10 @@ if __name__ == "__main__":
     if run_mode == "tournament":
         Q4_2024_AI_BENCHMARKING_ID = 32506
         Q1_2025_AI_BENCHMARKING_ID = 32627
+        Q2_2025_AI_BENCHMARKING_ID = 32721
         forecast_reports = asyncio.run(
             template_bot.forecast_on_tournament(
-                Q1_2025_AI_BENCHMARKING_ID, return_exceptions=True
+                Q2_2025_AI_BENCHMARKING_ID, return_exceptions=True
             )
         )
     elif run_mode == "quarterly_cup":
