@@ -1,4 +1,4 @@
-name: Forecast on Quarterly Cup
+name: Forecast on Q2 Tournament
 
 on:
   workflow_dispatch:
@@ -38,7 +38,7 @@ jobs:
         run: poetry install --no-interaction --no-root
       - name: Run bot
         run: |
-          poetry run python main.py --mode quarterly_cup
+          poetry run python main.py --mode tournament
         # this reads the environment variables from the github repository.
         # Store under Settings --> Secrets and variables --> Actions
         env:
