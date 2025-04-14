@@ -372,6 +372,8 @@ if __name__ == "__main__":
         "test_questions",
     ], "Invalid run mode"
 
+    print("HELLO WORLD1")
+    
     template_bot = Q1TemplateBot(
         research_reports_per_question=1,
         predictions_per_research_report=1,
@@ -416,6 +418,9 @@ if __name__ == "__main__":
                 questions, return_exceptions=True
             )
         )
+
+    print("HELLO WORLD2")
+    
     forecast_reports = typeguard.check_type(forecast_reports, list[ForecastReport | BaseException])
     summarize_reports(forecast_reports)
 
