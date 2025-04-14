@@ -126,6 +126,9 @@ class Q1TemplateBot(ForecastBot):
             f"\n\nThe question is: {question}"
         )  # You can ask the searcher to filter by date, exclude/include a domain, and run specific searches for finding sources vs finding highlights within a source
         response = await searcher.invoke(prompt)
+
+        print("TOM PERPLEXITY: {response}")
+        
         return response
 
     def _get_final_decision_llm(self) -> GeneralLlm:
