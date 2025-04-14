@@ -84,7 +84,7 @@ class Q1TemplateBot(ForecastBot):
                 research = ""
             logger.info(f"Found Research for {question.page_url}:\n{research}")
 
-            print("TOM RESEARCH: {research}")
+            print(f"TOM RESEARCH: {research}")
             
             return research
 
