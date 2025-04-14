@@ -83,6 +83,9 @@ class Q1TemplateBot(ForecastBot):
             else:
                 research = ""
             logger.info(f"Found Research for {question.page_url}:\n{research}")
+
+            print("TOM RESEARCH: {research}")
+            
             return research
 
     async def _call_perplexity(self, question: str, use_open_router: bool = False) -> str:
