@@ -91,7 +91,7 @@ class TemplateForecaster(ForecastBot):
                 )
                 research = ""
 
-            research = research_asknews[:4000] + "\n\n" + research_perplexity + "\n\n" + research_metaculus + "\n\n" + research_resolution_criteria
+            research = research_asknews[:15000] + "\n\n" + research_perplexity + "\n\n" + research_metaculus + "\n\n" + research_resolution_criteria
             
             logger.info(
                 f"Found Research for URL {question.page_url}:\n{research}"
