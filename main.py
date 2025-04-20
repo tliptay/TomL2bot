@@ -155,7 +155,8 @@ class TemplateForecaster(ForecastBot):
             f"""
             You are a research assistant.
             Find Metaculus questions that are similar to the question below.
-            Provide a summary of those Metaculus questions and their forecasts. 
+            Provide the Metaculus community forecasts on those questions and a brief summary.
+            Do NOT include any Metaculus questions that include 'PRACTICE'.
             
             The question is: {question}
             """
