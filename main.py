@@ -84,7 +84,7 @@ class TemplateForecaster(ForecastBot):
             )
 
             if os.getenv("OPENROUTER_API_KEY"):
-                print(f'<BACKGROUND>/n {question.background_info}/n </BACKGROUND>/n')
+                print(f'<RESOLUTION CRITERIA>\n {question.resolution_criteria}/n </RESOLUTION CRITERIA>/n')
                 #research = await self._call_perplexity_background(
                 #    question.background_info, use_open_router=True
                 #)
@@ -126,7 +126,7 @@ class TemplateForecaster(ForecastBot):
         response = await model.invoke(prompt)
         return response
 
-    async def _call_perplexity_background(
+    async def _call_perplexity_resolution(
         self, question: str, use_open_router: bool = False
     ) -> str:
         prompt = clean_indents(
