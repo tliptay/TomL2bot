@@ -355,11 +355,11 @@ if __name__ == "__main__":
 
     template_bot = TemplateForecaster(
         research_reports_per_question=1,
-        predictions_per_research_report=5,
+        predictions_per_research_report=1, # NEED TO REVERT TO 3 
         use_research_summary_to_forecast=False,
         publish_reports_to_metaculus=True,
         folder_to_save_reports_to=None,
-        skip_previously_forecasted_questions=True,
+        skip_previously_forecasted_questions=False, # NEED TO REVERT
         # llms={  # choose your model names or GeneralLlm llms here, otherwise defaults will be chosen for you
         #     "default": GeneralLlm(
         #         model="metaculus/anthropic/claude-3-5-sonnet-20241022",
