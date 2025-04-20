@@ -85,16 +85,29 @@ class TemplateForecaster(ForecastBot):
 
             if os.getenv("OPENROUTER_API_KEY"):
                 print(f'<RESOLUTION CRITERIA>\n {question.resolution_criteria}/n </RESOLUTION CRITERIA>/n')
-                #research = await self._call_perplexity_background(
+                #research_resolution_criteria = await self._call_perplexity_background(
                 #    question.background_info, use_open_router=True
                 #)
             else:
                 logger.warning(
                     f"No research provider found when processing question URL {question.page_url}. Will pass back empty string."
                 )
-                research = ""
+                research_resolution_criteria = ""
             logger.info(
-                f"Found Research for URL {question.page_url}:\n{research}"
+                f"Found Resolution Criteria Research for URL {question.page_url}:\n{research_resolution_criteria}"
+            )
+
+            if os.getenv("OPENROUTER_API_KEY"):
+                research_metaculus = await self._call_perplexity_metaculus(
+                    question.background_info, use_open_router=True
+                )
+            else:
+                logger.warning(
+                    f"No research provider found when processing question URL {question.page_url}. Will pass back empty string."
+                )
+                research_metaculus = ""
+            logger.info(
+                f"Found Metaculus Research for URL {question.page_url}:\n{research_metaculus}"
             )
             
             return research
@@ -155,7 +168,34 @@ class TemplateForecaster(ForecastBot):
         response = await model.invoke(prompt)
         return response
         
+    async def _call_perplexity_metaculus(
+        self, question: str, use_open_router: bool = False
+    ) -> str:
+        prompt = clean_indents(
+            f"""
+            You are a research assistant.
+            Find Metaculus questions that are similar to the question below.
+            Provide a summary of those Metaculus questions and their forecasts. 
+            
+            The question is: {question}
+            """
+        ) 
+        
+        if use_open_router:
+            model_name = "openrouter/perplexity/sonar-reasoning"
+        else:
+            model_name = "perplexity/sonar-pro"  # perplexity/sonar-reasoning and perplexity/sonar are cheaper, but do only 1 search
+        model = GeneralLlm(
+            model=model_name,
+            temperature=0.1,
+        )
+        response = await model.invoke(prompt)
 
+        print(f'<METACULUS>\n {response}\n </METACULUS>\n')
+        
+        return response
+
+    
     async def _run_forecast_on_binary(
         self, question: BinaryQuestion, research: str
     ) -> ReasonedPrediction[float]:
