@@ -66,12 +66,15 @@ class TemplateForecaster(ForecastBot):
             research_perplexity = ""
             research_metaculus = ""
             research_resolution_criteria = ""
-            #if os.getenv("ASKNEWS_CLIENT_ID") and os.getenv("ASKNEWS_SECRET"):
-            #    research = await AskNewsSearcher().get_formatted_news_async(
-            #        question.question_text
-            #    )
+            research_asknews = ""
+            
+            if os.getenv("ASKNEWS_CLIENT_ID") and os.getenv("ASKNEWS_SECRET"):
+                research_asknews = await AskNewsSearcher().get_formatted_news_async(
+                    question.question_text
+                )
             #elif os.getenv("PERPLEXITY_API_KEY"):
             #    research = await self._call_perplexity(question.question_text)
+            
             if os.getenv("OPENROUTER_API_KEY"):
                 research_perplexity = await self._call_perplexity(
                     question.question_text, use_open_router=True
@@ -88,7 +91,7 @@ class TemplateForecaster(ForecastBot):
                 )
                 research = ""
 
-            research = research_perplexity + "\n\n" + research_metaculus + "\n\n" + research_resolution_criteria
+            research = research_asknews + "\n\n" + research_perplexity + "\n\n" + research_metaculus + "\n\n" + research_resolution_criteria
             
             logger.info(
                 f"Found Research for URL {question.page_url}:\n{research}"
@@ -190,7 +193,6 @@ class TemplateForecaster(ForecastBot):
             {question.background_info}
             </background> 
 
-
             This question's outcome will be determined by the specific resolution criteria below. Assume this criteria is not yet satisfied:
             <resolution criteria>
             {question.resolution_criteria}
@@ -198,8 +200,7 @@ class TemplateForecaster(ForecastBot):
             {question.fine_print}
             </resolution criteria>
 
-
-            Please use the information and research provided by your trusted assistant below:
+            Please use the information and research gathered by your trusted assistant below:
             <research>
             {research}
             </research>
