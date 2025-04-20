@@ -203,10 +203,10 @@ class TemplateForecaster(ForecastBot):
             Like a good forecaster, you should use your own judgment to come to the most accurate forecast.
 
             The last thing you write is your final probabilities for the N options in this order {question.options} as:
-            Option_A: AA%, 1-99
-            Option_B: BB%, 1-99
+            Option_A: Probability_A
+            Option_B: Probability_B
             ...
-            Option_N: NN%, 1-99
+            Option_N: Probability_N
             """
         )
         reasoning = await self.get_llm("default", "llm").invoke(prompt)
