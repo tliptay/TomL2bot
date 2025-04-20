@@ -202,8 +202,6 @@ class TemplateForecaster(ForecastBot):
             Good forecasters (1) think about the base rates for similar events in the past, and (2) put extra weight on the status quo outcome since the world changes slowly most of the time. 
             Like a good forecaster, you should use your own judgment to come to the most accurate forecast.
 
-            Importantly, your probabilities for all options must add up to 100% AND the smallest probability that you can assign to an option is 1% (even if you think it is not possible).
-
             The last thing you write is your final probabilities for the N options in this order {question.options} as:
             Option_A: Probability_A
             Option_B: Probability_B
@@ -212,6 +210,8 @@ class TemplateForecaster(ForecastBot):
             """
         )
         reasoning = await self.get_llm("default", "llm").invoke(prompt)
+        print(f'<REASONING> {reasoning} </REASONING>')
+        
         prediction: PredictedOptionList = (
             PredictionExtractor.extract_option_list_with_percentage_afterwards(
                 reasoning, question.options
