@@ -84,13 +84,13 @@ class TemplateForecaster(ForecastBot):
                 )
                 research = ""
 
-            research = research_perplexity + "     " + research_metaculus
+            research = research_perplexity + "\n\n" + research_metaculus
             
             logger.info(
                 f"Found Research for URL {question.page_url}:\n{research}"
             )
 
-            print(f'<RESEARCH> {research} </RSEARCH>')      
+            print(f'<RESEARCH>\n {research}\n </RESEARCH>\n')      
             
             return research
 
