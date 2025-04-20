@@ -82,6 +82,21 @@ class TemplateForecaster(ForecastBot):
             logger.info(
                 f"Found Research for URL {question.page_url}:\n{research}"
             )
+
+            if os.getenv("OPENROUTER_API_KEY"):
+                print(f'<BACKGROUND>/n {question.background_info}/n </BACKGROUND>/n')
+                #research = await self._call_perplexity_background(
+                #    question.background_info, use_open_router=True
+                #)
+            else:
+                logger.warning(
+                    f"No research provider found when processing question URL {question.page_url}. Will pass back empty string."
+                )
+                research = ""
+            logger.info(
+                f"Found Research for URL {question.page_url}:\n{research}"
+            )
+            
             return research
 
     async def _call_perplexity(
@@ -110,6 +125,36 @@ class TemplateForecaster(ForecastBot):
         )
         response = await model.invoke(prompt)
         return response
+
+    async def _call_perplexity_background(
+        self, question: str, use_open_router: bool = False
+    ) -> str:
+        prompt = clean_indents(
+            f"""
+            You are an assistant to a superforecaster. 
+            The superforecaster will give you a question they intend to forecast on. 
+            To be a great assistant, you generate a concise but detailed rundown of the most relevant news and information sources for helping them research their question. 
+            When possible, try to get a diverse range of perspectives if the question is controversial. 
+            Use your judgment in deciding the most relevant information. 
+            You do not produce forecasts yourself - you are responsible for retrieving relevant information for the superforecaster.
+
+            The question is:
+            {question}
+            """
+        )  # NOTE: The metac bot in Q1 put everything but the question in the system prompt.
+        
+        
+        if use_open_router:
+            model_name = "openrouter/perplexity/sonar-reasoning"
+        else:
+            model_name = "perplexity/sonar-pro"  # perplexity/sonar-reasoning and perplexity/sonar are cheaper, but do only 1 search
+        model = GeneralLlm(
+            model=model_name,
+            temperature=0.1,
+        )
+        response = await model.invoke(prompt)
+        return response
+        
 
     async def _run_forecast_on_binary(
         self, question: BinaryQuestion, research: str
