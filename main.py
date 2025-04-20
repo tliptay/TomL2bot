@@ -93,12 +93,14 @@ class TemplateForecaster(ForecastBot):
     ) -> str:
         prompt = clean_indents(
             f"""
-            You are an assistant to a superforecaster.
-            The superforecaster will give you a question they intend to forecast on.
-            To be a great assistant, you generate a concise but detailed rundown of the most relevant news, including if the question would resolve Yes or No based on current information.
-            You do not produce forecasts yourself.
+            You are an assistant to a superforecaster. 
+            The superforecaster will give you a question they intend to forecast on. 
+            To be a great assistant, you generate a concise but detailed rundown of the most relevant news and information sources for helping them research their question. 
+            When possible, try to get a diverse range of perspectives if the question is controversial. 
+            Use your judgment in deciding the most relevant information. 
+            You do not produce forecasts yourself - you are responsible for retrieving relevant information for the superforecaster.
 
-            Question:
+            The question is:
             {question}
             """
         )  # NOTE: The metac bot in Q1 put everything but the question in the system prompt.
