@@ -63,7 +63,7 @@ class TemplateForecaster(ForecastBot):
 
     async def run_research(self, question: MetaculusQuestion) -> str:
         async with self._concurrency_limiter:
-            research = ""
+            research_perplexity = ""
             research_metaculus = ""
             #if os.getenv("ASKNEWS_CLIENT_ID") and os.getenv("ASKNEWS_SECRET"):
             #    research = await AskNewsSearcher().get_formatted_news_async(
@@ -72,7 +72,7 @@ class TemplateForecaster(ForecastBot):
             #elif os.getenv("PERPLEXITY_API_KEY"):
             #    research = await self._call_perplexity(question.question_text)
             if os.getenv("OPENROUTER_API_KEY"):
-                research = await self._call_perplexity(
+                research_perplexity = await self._call_perplexity(
                     question.question_text, use_open_router=True
                 )
                 research_metaculus = await self._call_perplexity_metaculus(
@@ -83,12 +83,14 @@ class TemplateForecaster(ForecastBot):
                     f"No research provider found when processing question URL {question.page_url}. Will pass back empty string."
                 )
                 research = ""
+
+            research = research_perplexity + "     " + research_metaculus
+            
             logger.info(
                 f"Found Research for URL {question.page_url}:\n{research}"
             )
 
-            print(f'<RESEARCH> {research} </RSEARCH>')
-            print(f'<METACULUS> {research_metaculus} </METACULUS>')            
+            print(f'<RESEARCH> {research} </RSEARCH>')      
             
             return research
 
@@ -154,7 +156,7 @@ class TemplateForecaster(ForecastBot):
         prompt = clean_indents(
             f"""
             You are a research assistant.
-            Find Metaculus questions that are similar to the question below.
+            Find any open, unresolved Metaculus questions that are similar to the question below.
             Provide the Metaculus community forecasts on those questions and a brief summary.
             Do NOT include any Metaculus questions that include 'PRACTICE'.
             
