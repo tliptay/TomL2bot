@@ -64,6 +64,7 @@ class TemplateForecaster(ForecastBot):
     async def run_research(self, question: MetaculusQuestion) -> str:
         async with self._concurrency_limiter:
             research = ""
+            research_metaculus = ""
             #if os.getenv("ASKNEWS_CLIENT_ID") and os.getenv("ASKNEWS_SECRET"):
             #    research = await AskNewsSearcher().get_formatted_news_async(
             #        question.question_text
@@ -72,6 +73,9 @@ class TemplateForecaster(ForecastBot):
             #    research = await self._call_perplexity(question.question_text)
             if os.getenv("OPENROUTER_API_KEY"):
                 research = await self._call_perplexity(
+                    question.question_text, use_open_router=True
+                )
+                research_metaculus = await self._call_perplexity_metaculus(
                     question.question_text, use_open_router=True
                 )
             else:
@@ -83,32 +87,8 @@ class TemplateForecaster(ForecastBot):
                 f"Found Research for URL {question.page_url}:\n{research}"
             )
 
-            if os.getenv("OPENROUTER_API_KEY"):
-                print(f'<RESOLUTION CRITERIA>\n {question.resolution_criteria}/n </RESOLUTION CRITERIA>/n')
-                #research_resolution_criteria = await self._call_perplexity_background(
-                #    question.background_info, use_open_router=True
-                #)
-            else:
-                logger.warning(
-                    f"No research provider found when processing question URL {question.page_url}. Will pass back empty string."
-                )
-                research_resolution_criteria = ""
-            logger.info(
-                f"Found Resolution Criteria Research for URL {question.page_url}:\n{research_resolution_criteria}"
-            )
-
-            if os.getenv("OPENROUTER_API_KEY"):
-                research_metaculus = await self._call_perplexity_metaculus(
-                    question.background_info, use_open_router=True
-                )
-            else:
-                logger.warning(
-                    f"No research provider found when processing question URL {question.page_url}. Will pass back empty string."
-                )
-                research_metaculus = ""
-            logger.info(
-                f"Found Metaculus Research for URL {question.page_url}:\n{research_metaculus}"
-            )
+            print(f'<RESEARCH> {research} </RSEARCH>')
+            print(f'<METACULUS> {research_metaculus} </METACULUS>')            
             
             return research
 
@@ -190,8 +170,6 @@ class TemplateForecaster(ForecastBot):
             temperature=0.1,
         )
         response = await model.invoke(prompt)
-
-        print(f'<METACULUS>\n {response}\n </METACULUS>\n')
         
         return response
 
