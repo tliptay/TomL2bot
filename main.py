@@ -156,9 +156,8 @@ class TemplateForecaster(ForecastBot):
         prompt = clean_indents(
             f"""
             You are a research assistant.
-            Find any open, unresolved Metaculus questions that are similar to the question below.
-            Provide the Metaculus community forecasts on those questions and a brief summary.
-            Do NOT include any Metaculus questions that include 'PRACTICE'.
+            Find any open, unresolved Metaculus, Kalshi, or Polymaker questions that are similar to the question below.
+            Provide the forecasts on those questions and a brief summary.
             
             The question is: {question}
             """
