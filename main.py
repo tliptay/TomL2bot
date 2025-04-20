@@ -65,6 +65,7 @@ class TemplateForecaster(ForecastBot):
         async with self._concurrency_limiter:
             research_perplexity = ""
             research_metaculus = ""
+            research_resolution_criteria = ""
             #if os.getenv("ASKNEWS_CLIENT_ID") and os.getenv("ASKNEWS_SECRET"):
             #    research = await AskNewsSearcher().get_formatted_news_async(
             #        question.question_text
@@ -78,13 +79,16 @@ class TemplateForecaster(ForecastBot):
                 research_metaculus = await self._call_perplexity_metaculus(
                     question.question_text, use_open_router=True
                 )
+                research_resolution_criteria = await self._call_perplexity_resolution_criteria(
+                    question.resolution_criteria, use_open_router=True
+                )
             else:
                 logger.warning(
                     f"No research provider found when processing question URL {question.page_url}. Will pass back empty string."
                 )
                 research = ""
 
-            research = research_perplexity + "\n\n" + research_metaculus
+            research = research_perplexity + "\n\n" + research_metaculus + "\n\n" + research_resolution_criteria
             
             logger.info(
                 f"Found Research for URL {question.page_url}:\n{research}"
@@ -101,7 +105,7 @@ class TemplateForecaster(ForecastBot):
             f"""
             You are an assistant to a superforecaster. 
             The superforecaster will give you a question they intend to forecast on. 
-            To be a great assistant, you generate a concise but detailed rundown of the most relevant news and information sources for helping them research their question. 
+            To be a great assistant, you generate a concise but detailed rundown of the most relevant news and information sources for helping them research the question. 
             When possible, try to get a diverse range of perspectives if the question is controversial. 
             Use your judgment in deciding the most relevant information. 
             You do not produce forecasts yourself - you are responsible for retrieving relevant information for the superforecaster.
@@ -121,20 +125,16 @@ class TemplateForecaster(ForecastBot):
         response = await model.invoke(prompt)
         return response
 
-    async def _call_perplexity_resolution(
-        self, question: str, use_open_router: bool = False
+    async def _call_perplexity_resolution_criteria(
+        self, resolution_criteria: str, use_open_router: bool = False
     ) -> str:
         prompt = clean_indents(
             f"""
-            You are an assistant to a superforecaster. 
-            The superforecaster will give you a question they intend to forecast on. 
-            To be a great assistant, you generate a concise but detailed rundown of the most relevant news and information sources for helping them research their question. 
-            When possible, try to get a diverse range of perspectives if the question is controversial. 
-            Use your judgment in deciding the most relevant information. 
-            You do not produce forecasts yourself - you are responsible for retrieving relevant information for the superforecaster.
-
-            The question is:
-            {question}
+            You are a research assistant.
+            Provide a summary of information found at any webpages from URLs listed in the text below.
+            Only provide information directly from any URLs.
+            
+            The text is: {resolution_criteria}
             """
         )  # NOTE: The metac bot in Q1 put everything but the question in the system prompt.
         
@@ -156,7 +156,7 @@ class TemplateForecaster(ForecastBot):
         prompt = clean_indents(
             f"""
             You are a research assistant.
-            Find any open, unresolved Metaculus, Kalshi, or Polymaker questions that are similar to the question below.
+            Find any open, unresolved Metaculus questions that are similar to the question below.
             Provide the forecasts on those questions and a brief summary.
             
             The question is: {question}
