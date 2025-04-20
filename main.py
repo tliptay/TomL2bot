@@ -121,18 +121,23 @@ class TemplateForecaster(ForecastBot):
             Your interview question is:
             {question.question_text}
 
-            Question background:
+            <background>
             {question.background_info}
+            </background> 
 
 
-            This question's outcome will be determined by the specific criteria below. These criteria have not yet been satisfied:
+            This question's outcome will be determined by the specific resolution criteria below. Assume this criteria is not yet satisfied:
+            <resolution criteria>
             {question.resolution_criteria}
 
             {question.fine_print}
+            </resolution criteria>
 
 
-            Your research assistant says:
+            Please use the information and research provided by your trusted assistant below:
+            <research>
             {research}
+            </research>
 
             Today is {datetime.now().strftime("%Y-%m-%d")}.
 
@@ -142,8 +147,9 @@ class TemplateForecaster(ForecastBot):
             (c) A brief description of a scenario that results in a No outcome.
             (d) A brief description of a scenario that results in a Yes outcome.
 
-            You write your rationale remembering that good forecasters put extra weight on the status quo outcome since the world changes slowly most of the time.
-
+            Good forecasters (1) think about the base rates for similar events in the past, and (2) put extra weight on the status quo outcome since the world changes slowly most of the time. 
+            Like a good forecaster, you should use your own judgment to come to the most accurate forecast.
+            
             The last thing you write is your final answer as: "Probability: ZZ%", 0-100
             """
         )
