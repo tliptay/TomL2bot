@@ -176,26 +176,31 @@ class TemplateForecaster(ForecastBot):
 
             The options are: {question.options}
 
-
-            Background:
+            <background>
             {question.background_info}
+            </background> 
 
+            This question's outcome will be determined by the specific resolution criteria below. Assume this criteria is not yet satisfied:
+            <resolution criteria>
             {question.resolution_criteria}
 
             {question.fine_print}
+            </resolution criteria>
 
-
-            Your research assistant says:
+            Please use the information and research provided by your trusted assistant below:
+            <research>
             {research}
+            </research>
 
             Today is {datetime.now().strftime("%Y-%m-%d")}.
 
             Before answering you write:
             (a) The time left until the outcome to the question is known.
             (b) The status quo outcome if nothing changed.
-            (c) A description of an scenario that results in an unexpected outcome.
+            (c) A description of a scenario that results in an unexpected outcome.
 
-            You write your rationale remembering that (1) good forecasters put extra weight on the status quo outcome since the world changes slowly most of the time, and (2) good forecasters leave some moderate probability on most options to account for unexpected outcomes.
+            Good forecasters (1) think about the base rates for similar events in the past, and (2) put extra weight on the status quo outcome since the world changes slowly most of the time. 
+            Like a good forecaster, you should use your own judgment to come to the most accurate forecast.
 
             The last thing you write is your final probabilities for the N options in this order {question.options} as:
             Option_A: Probability_A
