@@ -207,6 +207,8 @@ class TemplateForecaster(ForecastBot):
             Option_B: Probability_B
             ...
             Option_N: Probability_N
+
+            Do not write any text after your probability for any option.
             """
         )
         reasoning = await self.get_llm("default", "llm").invoke(prompt)
