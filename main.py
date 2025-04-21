@@ -438,10 +438,10 @@ if __name__ == "__main__":
         #     ),
         #     "summarizer": "openai/gpt-4o-mini",
         # },
-        #llms={ # LLM models to use for different tasks. Will use default llms if not specified. Requires the relevant provider environment variables to be set.
-        #    "default": GeneralLlm(model="openai/o3"),
-        #    "summarizer": "openai/gpt-4o-mini",
-        #}
+        llms={ # LLM models to use for different tasks. Will use default llms if not specified. Requires the relevant provider environment variables to be set.
+            "default": GeneralLlm(model="openrouter/openai/o3"),
+            "summarizer": "openrouter/openai/gpt-4o-mini",
+        }
     )
 
     if run_mode == "tournament":
