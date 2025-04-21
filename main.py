@@ -340,6 +340,10 @@ class TemplateForecaster(ForecastBot):
             Units for answer: {question.unit_of_measure if question.unit_of_measure else "Not stated (please infer this)"}
             {lower_bound_message}
             {upper_bound_message}
+            
+            Important tips: 
+            - Your 20th percentile forecast should be greater than the lower bound of {question.lower_bound}.
+            - Your 80th percentile forecast should be less than the upper bound of {question.upper_bound}.
 
             Formatting Instructions:
             - Please notice the units requested (e.g. whether you represent a number as 1,000,000 or 1 million).
@@ -348,12 +352,10 @@ class TemplateForecaster(ForecastBot):
 
             The last thing you write is your final answer as:
             "
-            Percentile 10: XX
             Percentile 20: XX
             Percentile 40: XX
             Percentile 60: XX
             Percentile 80: XX
-            Percentile 90: XX
             "
             """
         )
