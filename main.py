@@ -335,15 +335,16 @@ class TemplateForecaster(ForecastBot):
             (e) A brief description of an unexpected scenario that results in a low outcome.
             (f) A brief description of an unexpected scenario that results in a high outcome.
 
-            You write your rationale remembering that (1) good forecasters put extra weight on the status quo outcome since the world changes slowly most of the time, and (2) good forecasters leave some moderate probability on most options to account for unexpected outcomes.
+            You write your rationale remembering that (1) good forecasters put extra weight on the status quo outcome since the world changes slowly most of the time, and (2) good forecasters err on the side of having wide confidence intervals to account for unexpected outcomes.
+
+            Important tips: 
+            - Your 20th percentile forecast should be greater than the lower bound of {question.lower_bound}.
+            - Your 80th percentile forecast should be less than the upper bound of {question.upper_bound}.
+            - When in 
 
             Units for answer: {question.unit_of_measure if question.unit_of_measure else "Not stated (please infer this)"}
             {lower_bound_message}
             {upper_bound_message}
-            
-            Important tips: 
-            - Your 20th percentile forecast should be greater than the lower bound of {question.lower_bound}.
-            - Your 80th percentile forecast should be less than the upper bound of {question.upper_bound}.
 
             Formatting Instructions:
             - Please notice the units requested (e.g. whether you represent a number as 1,000,000 or 1 million).
