@@ -424,11 +424,11 @@ if __name__ == "__main__":
 
     template_bot = TemplateForecaster(
         research_reports_per_question=1,
-        predictions_per_research_report=5,
+        predictions_per_research_report=3,
         use_research_summary_to_forecast=False,
         publish_reports_to_metaculus=True,
         folder_to_save_reports_to=None,
-        skip_previously_forecasted_questions=True,
+        skip_previously_forecasted_questions=False, # REVERT
         # llms={  # choose your model names or GeneralLlm llms here, otherwise defaults will be chosen for you
         #     "default": GeneralLlm(
         #         model="metaculus/anthropic/claude-3-5-sonnet-20241022",
@@ -438,10 +438,10 @@ if __name__ == "__main__":
         #     ),
         #     "summarizer": "openai/gpt-4o-mini",
         # },
-        #llms={ # LLM models to use for different tasks. Will use default llms if not specified. Requires the relevant provider environment variables to be set.
-        #    "default": GeneralLlm(model="openrouter/openai/o3"),
-        #    "summarizer": "openrouter/openai/gpt-4o-mini",
-        #}
+        llms={ # LLM models to use for different tasks. Will use default llms if not specified. Requires the relevant provider environment variables to be set.
+            "default": GeneralLlm(model="openrouter/google/gemini-2.5-pro-preview-03-25"),
+            "summarizer": "openrouter/openai/gpt-4o-mini",
+        }
     )
 
     if run_mode == "tournament":
