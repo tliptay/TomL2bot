@@ -207,17 +207,17 @@ class TemplateForecaster(ForecastBot):
 
             Today is {datetime.now().strftime("%Y-%m-%d")}.
 
-            Before answering you write:
-            (a) The time left until the outcome to the question is known.
-            (b) The status quo outcome if nothing changed.
-            (c) A brief description of a scenario that results in a No outcome.
-            (d) A brief description of a scenario that results in a Yes outcome.
-
             Tips from good forecasters:
             - If an event has been anticipated to occur in 3 months, but 2.5 months have gone by and it still hasn't happened yet and there is no recent news within the last week, then you should be skeptical that it will happen on the stated timeframe. It probably means that it will be delayed, or plans have changed.
             - Think about the base rates for similar events in the past.
             - Put extra weight on the status quo outcome since the world changes slowly most of the time.
             - Like a good forecaster, you should use your own judgment to come to the most accurate forecast!
+
+            Before answering you write:
+            (a) The time left until the outcome to the question is known.
+            (b) The status quo outcome if nothing changed.
+            (c) A brief description of a scenario that results in a No outcome.
+            (d) A brief description of a scenario that results in a Yes outcome.
             
             The last thing you write is your final answer as: "Probability: ZZ%", 0-100
             """
@@ -268,8 +268,11 @@ class TemplateForecaster(ForecastBot):
             (b) The status quo outcome if nothing changed.
             (c) A description of a scenario that results in an unexpected outcome.
 
-            Good forecasters (1) think about the base rates for similar events in the past, and (2) put extra weight on the status quo outcome since the world changes slowly most of the time. 
-            Like a good forecaster, you should use your own judgment to come to the most accurate forecast.
+            Tips from good forecasters:
+            - Think about the base rates for similar events in the past.
+            - Put extra weight on the status quo outcome since the world changes slowly most of the time. 
+            - Even if an option seems impossible, never put less than 2% on an option. (It is possible that you don't have all of the information, or have misunderstood something.)
+            - Like a good forecaster, you should use your own judgment to come to the most accurate forecast.
 
             The last thing you write is your final probabilities for the N options in this order {question.options} as:
             Option_A: Probability_A %
@@ -343,7 +346,9 @@ class TemplateForecaster(ForecastBot):
             Important tips: 
             - Your 20th percentile forecast should be greater than the lower bound of {question.lower_bound}.
             - Your 80th percentile forecast should be less than the upper bound of {question.upper_bound}.
-            - When in 
+            - Have a wide range for your tails since you might not have all the information, or might be misunderstanding something.
+            - Historically your 20th and 80th percentiles have been too narrow, so try to be more calibrated by making them wider than you initially think.
+            - Like a good forecaster use your own judgment!
 
             Units for answer: {question.unit_of_measure if question.unit_of_measure else "Not stated (please infer this)"}
             {lower_bound_message}
