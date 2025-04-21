@@ -348,7 +348,7 @@ class TemplateForecaster(ForecastBot):
             - Your 20th percentile forecast should be greater than the lower bound of {question.lower_bound}.
             - Your 80th percentile forecast should be less than the upper bound of {question.upper_bound}.
             - Have a wide range for your tails since you might not have all the information, or might be misunderstanding something.
-            - Historically your 20th and 80th percentiles have been too narrow, so try to be more calibrated by making them wider than you initially think.
+            - Historically your 10th and 90th percentiles have been far too narrow. Try to be more calibrated by making them twice as wide as you think is necessary.
             - Like a good forecaster use your own judgment!
 
             Units for answer: {question.unit_of_measure if question.unit_of_measure else "Not stated (please infer this)"}
@@ -362,10 +362,12 @@ class TemplateForecaster(ForecastBot):
 
             The last thing you write is your final answer as:
             "
+            Percentile 10: XX
             Percentile 20: XX
             Percentile 40: XX
             Percentile 60: XX
             Percentile 80: XX
+            Percentile 90: XX
             "
             """
         )
