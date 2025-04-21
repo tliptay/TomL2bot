@@ -309,37 +309,42 @@ class TemplateForecaster(ForecastBot):
             Your interview question is:
             {question.question_text}
 
-            Background:
+            <background>
             {question.background_info}
+            </background> 
 
+            This question's outcome will be determined by the specific resolution criteria below. Assume this criteria is not yet satisfied:
+            <resolution criteria>
             {question.resolution_criteria}
 
             {question.fine_print}
+            </resolution criteria>
 
-            Units for answer: {question.unit_of_measure if question.unit_of_measure else "Not stated (please infer this)"}
-
-            Your research assistant says:
+            Please use the information and research provided by your trusted assistant below:
+            <research>
             {research}
+            </research>
 
             Today is {datetime.now().strftime("%Y-%m-%d")}.
 
+            Before answering you write:
+            (a) The time left until the outcome to the question is known.
+            (b) The outcome if nothing changed.
+            (c) The outcome if the current trend continued.
+            (d) The expectations of experts, markets, or Metaculus.
+            (e) A brief description of an unexpected scenario that results in a low outcome.
+            (f) A brief description of an unexpected scenario that results in a high outcome.
+
+            You write your rationale remembering that (1) good forecasters put extra weight on the status quo outcome since the world changes slowly most of the time, and (2) good forecasters leave some moderate probability on most options to account for unexpected outcomes.
+
+            Units for answer: {question.unit_of_measure if question.unit_of_measure else "Not stated (please infer this)"}
             {lower_bound_message}
             {upper_bound_message}
 
             Formatting Instructions:
             - Please notice the units requested (e.g. whether you represent a number as 1,000,000 or 1 million).
             - Never use scientific notation.
-            - Always start with a smaller number (more negative if negative) and then increase from there
-
-            Before answering you write:
-            (a) The time left until the outcome to the question is known.
-            (b) The outcome if nothing changed.
-            (c) The outcome if the current trend continued.
-            (d) The expectations of experts and markets.
-            (e) A brief description of an unexpected scenario that results in a low outcome.
-            (f) A brief description of an unexpected scenario that results in a high outcome.
-
-            You remind yourself that good forecasters are humble and set wide 90/10 confidence intervals to account for unknown unknowns.
+            - Always start with a smaller number (more negative if negative) and then increase from there.
 
             The last thing you write is your final answer as:
             "
@@ -361,6 +366,9 @@ class TemplateForecaster(ForecastBot):
         logger.info(
             f"Forecasted URL {question.page_url} as {prediction.declared_percentiles} with reasoning:\n{reasoning}"
         )
+
+        print(f'<CONTINUOUS>\n {prediction.declared_percentiles}\n </CONTINUOUS>\n')
+        
         return ReasonedPrediction(
             prediction_value=prediction, reasoning=reasoning
         )
