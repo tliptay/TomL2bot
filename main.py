@@ -211,6 +211,7 @@ class TemplateForecaster(ForecastBot):
             - If an event has been anticipated to occur in 3 months, but 2.5 months have gone by and it still hasn't happened yet and there is no recent news within the last week, then you should be skeptical that it will happen on the stated timeframe. It probably means that it will be delayed, or plans have changed.
             - Think about the base rates for similar events in the past.
             - Put extra weight on the status quo outcome since the world changes slowly most of the time.
+            - Even if something seems impossible, never forecast less than 2%. (It is possible that you don't have all of the information, or have misunderstood something.)
             - Like a good forecaster, you should use your own judgment to come to the most accurate forecast!
 
             Before answering you write:
