@@ -213,8 +213,11 @@ class TemplateForecaster(ForecastBot):
             (c) A brief description of a scenario that results in a No outcome.
             (d) A brief description of a scenario that results in a Yes outcome.
 
-            Good forecasters (1) think about the base rates for similar events in the past, and (2) put extra weight on the status quo outcome since the world changes slowly most of the time. 
-            Like a good forecaster, you should use your own judgment to come to the most accurate forecast.
+            Tips from good forecasters:
+            - If an event has been anticipated to occur in 3 months, but 2.5 months have gone by and it still hasn't happened yet and there is no recent news within the last week, then you should be skeptical that it will happen on the stated timeframe. It probably means that it will be delayed, or plans have changed.
+            - Think about the base rates for similar events in the past.
+            - Put extra weight on the status quo outcome since the world changes slowly most of the time.
+            - Like a good forecaster, you should use your own judgment to come to the most accurate forecast!
             
             The last thing you write is your final answer as: "Probability: ZZ%", 0-100
             """
