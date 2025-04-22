@@ -213,7 +213,7 @@ class TemplateForecaster(ForecastBot):
             - Put extra weight on the status quo outcome since the world changes slowly most of the time.
             - Even if something seems impossible, never forecast less than 5%. (It is possible that you don't have all of the information, or have misunderstood something.)
             - Even if something seems certain, never forecast more than 95%. (It is possible that you don't have all of the information, or have misunderstood something.)
-            - Pay close attention to the exact wording of the resolution criteria.
+            - Pay close attention to the exact wording and resolution source in the resolution criteria. Sometimes newspaper articles will cite a number that is significantly different from the number in the resolution criteria. Make sure to pay attention to the resolution criteria.
             - Like a good forecaster, you should use your own judgment to come to the most accurate forecast!
 
             Before answering you write:
@@ -276,7 +276,7 @@ class TemplateForecaster(ForecastBot):
             - Put extra weight on the status quo outcome since the world changes slowly most of the time. 
             - Even if an option seems impossible, never put less than 2% on an option. (It is possible that you don't have all of the information, or have misunderstood something.)
             - Even if an option seems certain, never put more than 95% on an option. (It is possible that you don't have all of the information, or have misunderstood something.)            
-            - Pay close attention to the exact wording of the resolution criteria.
+            - Pay close attention to the exact wording and resolution source in the resolution criteria. Sometimes newspaper articles will cite a number that is significantly different from the number in the resolution criteria. Make sure to pay attention to the resolution criteria.
             - Like a good forecaster, you should use your own judgment to come to the most accurate forecast.
 
             The last thing you write is your final probabilities for the N options in this order {question.options} as:
@@ -353,7 +353,7 @@ class TemplateForecaster(ForecastBot):
             - Your 80th percentile forecast should be less than the upper bound of {question.upper_bound}.
             - Have a wide range for your tails since you might not have all the information, or might be misunderstanding something.
             - Historically your 80/20 confidence interval been far too narrow. Try to be more calibrated by making your Percentile_10 to Percentile_90 range twice as wide as you think is necessary.
-            - Pay close attention to the exact wording of the resolution criteria.
+            - Pay close attention to the exact wording and resolution source in the resolution criteria. Sometimes newspaper articles will cite a number that is significantly different from the number in the resolution criteria. Make sure to pay attention to the resolution criteria.
             - Like a good forecaster use your own judgment!
 
             Units for answer: {question.unit_of_measure if question.unit_of_measure else "Not stated (please infer this)"}
