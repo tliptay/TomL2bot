@@ -459,7 +459,7 @@ if __name__ == "__main__":
         # },
         llms={ # LLM models to use for different tasks. Will use default llms if not specified. Requires the relevant provider environment variables to be set.
             "default": GeneralLlm(model="openrouter/google/gemini-2.5-pro-preview-03-25"),
-            "summarizer": "openrouter/openai/gpt-4o-2024-11-20",
+            "summarizer": "openrouter/openai/gpt-4o-mini",
         }
     )
 
