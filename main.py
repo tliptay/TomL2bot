@@ -280,10 +280,10 @@ class TemplateForecaster(ForecastBot):
             - Like a good forecaster, you should use your own judgment to come to the most accurate forecast.
 
             The last thing you write is your final probabilities for the N options in this order {question.options} as:
-            Option_A: Probability_A %
-            Option_B: Probability_B %
+            Option A: Probability A %
+            Option B: Probability B %
             ...
-            Option_N: Probability_N %
+            Option N: Probability N %
 
             Do not write any text after the percent sign for your probability of an option.
             """
