@@ -279,12 +279,13 @@ class TemplateForecaster(ForecastBot):
             - Pay close attention to the exact wording and resolution source in the resolution criteria. Sometimes newspaper articles will cite a number that is significantly different from the number in the resolution criteria. Make sure to pay attention to the resolution criteria.
             - Like a good forecaster, you should use your own judgment to come to the most accurate forecast.
 
-            The last thing you write is your final probabilities for the N options in this order {question.options} as:
+            The last thing you write is your final probabilities for the options in this order {question.options} as:
             Option A: Probability A %
             Option B: Probability B %
             ...
             Option N: Probability N %
 
+            For each "Option X" in the list above, replace it with the actual option text from this list: {question.options}
             Do not write any text after the percent sign for your probability of an option.
             """
         )
