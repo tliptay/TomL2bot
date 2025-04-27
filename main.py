@@ -476,15 +476,21 @@ if __name__ == "__main__":
         template_bot.skip_previously_forecasted_questions = False
         forecast_reports = asyncio.run(
             template_bot.forecast_on_tournament(
-                MetaculusApi.CURRENT_QUARTERLY_CUP_ID, return_exceptions=True
+               MetaculusApi.CURRENT_QUARTERLY_CUP_ID, return_exceptions=True
             )
         )
     elif run_mode == "test_questions":
         # Example questions are a good way to test the bot's performance on a single question
         EXAMPLE_QUESTIONS = [
-            "https://www.metaculus.com/questions/578/human-extinction-by-2100/",  # Human Extinction - Binary
+            # "https://www.metaculus.com/questions/578/human-extinction-by-2100/",  # Human Extinction - Binary
             "https://www.metaculus.com/questions/14333/age-of-oldest-human-as-of-2100/",  # Age of Oldest Human - Numeric
-            "https://www.metaculus.com/questions/22427/number-of-new-leading-ai-labs/",  # Number of New Leading AI Labs - Multiple Choice
+            # "https://www.metaculus.com/questions/22427/number-of-new-leading-ai-labs/",  # Number of New Leading AI Labs - Multiple Choice
+            # "https://www.metaculus.com/questions/21017/next-pope/",
+            "https://www.metaculus.com/questions/37151/george-santos-sentence-length/",
+            "https://www.metaculus.com/questions/34751/home-battery-annual-frequency-imbalance-return/",
+            "https://www.metaculus.com/questions/36881/medicaid-cut-over-10-years-in-2025-reconciliation-bill/",
+            "https://www.metaculus.com/questions/26327/us-measles-outbreak-2025/",
+            
         ]
         template_bot.skip_previously_forecasted_questions = False
         questions = [
