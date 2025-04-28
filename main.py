@@ -489,6 +489,9 @@ if __name__ == "__main__":
             "https://www.metaculus.com/questions/34751/home-battery-annual-frequency-imbalance-return/",
             "https://www.metaculus.com/questions/36881/medicaid-cut-over-10-years-in-2025-reconciliation-bill/",
             "https://www.metaculus.com/questions/26327/us-measles-outbreak-2025/",
+            "https://www.metaculus.com/questions/605/global-warming-in-2100-over-1880-baseline/",
+            "https://www.metaculus.com/questions/9062/time-from-weak-agi-to-superintelligence/",
+            "https://www.metaculus.com/questions/31817/h5-case-fatality-rate-in-us/",
             
         ]
         template_bot.skip_previously_forecasted_questions = False
