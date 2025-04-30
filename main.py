@@ -134,10 +134,15 @@ class TemplateForecaster(ForecastBot):
         prompt = clean_indents(
             f"""
             You are a research assistant.
-            Provide a summary of information found at any webpages from URLs listed in the text below.
-            Only provide information directly from any URLs.
             
-            The text is: {resolution_criteria}
+            Provide any information found from URLs listed in the text below that might be relevant for answering this question:
+            {question}
+
+            Only provide information directly from any URLs from the text:
+            
+            <text>
+            {resolution_criteria}
+            </text>
             """
         )  # NOTE: The metac bot in Q1 put everything but the question in the system prompt.
         
@@ -159,7 +164,7 @@ class TemplateForecaster(ForecastBot):
         prompt = clean_indents(
             f"""
             You are a research assistant.
-            Find any open, unresolved Metaculus questions that are similar to the question below.
+            Find any open Metaculus questions that are similar to the question below. Do not provide any resolved or closed questions.
             Provide the forecasts on those questions and a brief summary.
             
             The question is: {question}
@@ -458,7 +463,10 @@ if __name__ == "__main__":
         #     "summarizer": "openai/gpt-4o-mini",
         # },
         llms={ # LLM models to use for different tasks. Will use default llms if not specified. Requires the relevant provider environment variables to be set.
-            "default": GeneralLlm(model="openrouter/google/gemini-2.5-pro-preview-03-25"),
+            "default": GeneralLlm(
+                model="openrouter/google/gemini-2.5-pro-preview-03-25",
+                temperature=0.2,
+            ),
             "summarizer": "openrouter/openai/gpt-4o-mini",
         }
     )
