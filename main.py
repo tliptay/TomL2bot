@@ -370,6 +370,8 @@ class TemplateForecaster(ForecastBot):
             - Please notice the units requested (e.g. whether you represent a number as 1,000,000 or 1 million).
             - Never use scientific notation.
             - Always start with a smaller number (more negative if negative) and then increase from there.
+            - For parsing purposes, don't refer to "percentile" in your reasoning. Instead, use P10, P90...
+            - Only use the word "Percentile" in your final answer.
 
             The last thing you write is your final answer as:
             "
