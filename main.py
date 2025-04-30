@@ -382,9 +382,8 @@ class TemplateForecaster(ForecastBot):
             "
             Percentile 10: XX
             Percentile 20: XX
-            Percentile 30: XX
-            Percentile 50: XX
-            Percentile 70: XX
+            Percentile 40: XX
+            Percentile 60: XX
             Percentile 80: XX
             Percentile 90: XX
             "
