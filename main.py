@@ -361,11 +361,11 @@ class TemplateForecaster(ForecastBot):
             - Your 20th percentile forecast should be greater than the lower bound of {question.lower_bound}.
             - Your 80th percentile forecast should be less than the upper bound of {question.upper_bound}.
             - Have a wide range for your tails since you might not have all the information, or might be misunderstanding something.
-            - Historically your 80/20 confidence interval been much too narrow. To be more calibrated make your Percentile_10 to Percentile_90 4x wider than your Percentile_20 to Percentile_80 interval. These wide tails will help your calibration.
+            - Historically your 80/20 confidence interval has been much too narrow. To be more calibrated make your P10 to P90 4x wider than your P20 to P80 interval. These wide tails will help your calibration.
             - Think about if there are seasonal effects.
             - Think about what the current trend is and if it makes sense to extrapolate, or not. Some things like stock prices are effectively random walks, so recent trends likely don't matter.
             - Pay close attention to the exact wording and resolution source in the resolution criteria. Sometimes newspaper articles will cite a number that is significantly different from the number in the resolution criteria. Make sure to pay attention to the resolution criteria.
-            - Like a good forecaster use your own judgment!
+            - Like a good forecaster, use your own judgment!
 
             Units for answer: {question.unit_of_measure if question.unit_of_measure else "Not stated (please infer this)"}
             {lower_bound_message}
