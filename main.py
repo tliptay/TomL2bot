@@ -83,7 +83,7 @@ class TemplateForecaster(ForecastBot):
                     question.question_text, use_open_router=True
                 )
                 research_resolution_criteria = await self._call_perplexity_resolution_criteria(
-                    question.resolution_criteria, use_open_router=True
+                    question.resolution_criteria, question.question_text, use_open_router=True
                 )
             else:
                 logger.warning(
@@ -129,7 +129,7 @@ class TemplateForecaster(ForecastBot):
         return response
 
     async def _call_perplexity_resolution_criteria(
-        self, resolution_criteria: str, use_open_router: bool = False
+        self, resolution_criteria: str, question: str, use_open_router: bool = False
     ) -> str:
         prompt = clean_indents(
             f"""
