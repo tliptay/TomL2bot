@@ -216,6 +216,8 @@ class TemplateForecaster(ForecastBot):
             - If an event has been anticipated to occur in 3 months, but 2.5 months have gone by and it still hasn't happened yet and there is no recent news within the last week, then you should be skeptical that it will happen on the stated timeframe. It probably means that it will be delayed, or plans have changed.
             - Think about the base rates for similar events in the past.
             - Put extra weight on the status quo outcome since the world changes slowly most of the time.
+            - Think about if there are seasonal effects.
+            - Think about what the current trend is and if it makes sense to extrapolate, or not. Some things like stock prices are effectively random walks, so recent trends likely don't matter.
             - Even if something seems impossible, never forecast less than 5%. (It is possible that you don't have all of the information, or have misunderstood something.)
             - Even if something seems certain, never forecast more than 95%. (It is possible that you don't have all of the information, or have misunderstood something.)
             - Pay close attention to the exact wording and resolution source in the resolution criteria. Sometimes newspaper articles will cite a number that is significantly different from the number in the resolution criteria. Make sure to pay attention to the resolution criteria.
@@ -279,6 +281,8 @@ class TemplateForecaster(ForecastBot):
             Tips from good forecasters:
             - Think about the base rates for similar events in the past.
             - Put extra weight on the status quo outcome since the world changes slowly most of the time. 
+            - Think about if there are seasonal effects.
+            - Think about what the current trend is and if it makes sense to extrapolate, or not. Some things like stock prices are effectively random walks, so recent trends likely don't matter.
             - Even if an option seems impossible, never put less than 2% on an option. (It is possible that you don't have all of the information, or have misunderstood something.)
             - Even if an option seems certain, never put more than 95% on an option. (It is possible that you don't have all of the information, or have misunderstood something.)            
             - Pay close attention to the exact wording and resolution source in the resolution criteria. Sometimes newspaper articles will cite a number that is significantly different from the number in the resolution criteria. Make sure to pay attention to the resolution criteria.
@@ -348,9 +352,8 @@ class TemplateForecaster(ForecastBot):
             (a) The time left until the outcome to the question is known.
             (b) The outcome if nothing changed.
             (c) The outcome if the current trend continued.
-            (d) The expectations of experts, markets, or Metaculus.
-            (e) A brief description of an unexpected scenario that results in a low outcome.
-            (f) A brief description of an unexpected scenario that results in a high outcome.
+            (d) A brief description of an unexpected scenario that results in a low outcome.
+            (e) A brief description of an unexpected scenario that results in a high outcome.
 
             You write your rationale remembering that (1) good forecasters put extra weight on the status quo outcome since the world changes slowly most of the time, and (2) good forecasters err on the side of having wide confidence intervals to account for unexpected outcomes.
 
@@ -359,6 +362,8 @@ class TemplateForecaster(ForecastBot):
             - Your 80th percentile forecast should be less than the upper bound of {question.upper_bound}.
             - Have a wide range for your tails since you might not have all the information, or might be misunderstanding something.
             - Historically your 80/20 confidence interval been much too narrow. To be more calibrated make your Percentile_10 to Percentile_90 4x wider than your Percentile_20 to Percentile_80 interval. These wide tails will help your calibration.
+            - Think about if there are seasonal effects.
+            - Think about what the current trend is and if it makes sense to extrapolate, or not. Some things like stock prices are effectively random walks, so recent trends likely don't matter.
             - Pay close attention to the exact wording and resolution source in the resolution criteria. Sometimes newspaper articles will cite a number that is significantly different from the number in the resolution criteria. Make sure to pay attention to the resolution criteria.
             - Like a good forecaster use your own judgment!
 
