@@ -296,8 +296,8 @@ class TemplateForecaster(ForecastBot):
             ...
             Option [text of last option]: [Probability second option] %
 
-            For [text of first option], replace it with the actual first option text from this list: {question.options}. 
-            For [Probability first option], replace it with the probability of the first option.
+            For [text of first option], replace it with the actual text from this list: {question.options}. Do not include quotation marks.
+            For [Probability first option], replace it with the probability of the first option. It should be an integer 1-99.
             Do not write any text after the percent sign for your probability of an option.
             """
         )
