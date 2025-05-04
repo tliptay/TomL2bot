@@ -539,15 +539,17 @@ if __name__ == "__main__":
         EXAMPLE_QUESTIONS = [
             # "https://www.metaculus.com/questions/578/human-extinction-by-2100/",  # Human Extinction - Binary
             "https://www.metaculus.com/questions/14333/age-of-oldest-human-as-of-2100/",  # Age of Oldest Human - Numeric
-            # "https://www.metaculus.com/questions/22427/number-of-new-leading-ai-labs/",  # Number of New Leading AI Labs - Multiple Choice
-            # "https://www.metaculus.com/questions/21017/next-pope/",
-            "https://www.metaculus.com/questions/37151/george-santos-sentence-length/",
-            "https://www.metaculus.com/questions/34751/home-battery-annual-frequency-imbalance-return/",
-            "https://www.metaculus.com/questions/36881/medicaid-cut-over-10-years-in-2025-reconciliation-bill/",
-            "https://www.metaculus.com/questions/26327/us-measles-outbreak-2025/",
-            "https://www.metaculus.com/questions/605/global-warming-in-2100-over-1880-baseline/",
-            "https://www.metaculus.com/questions/9062/time-from-weak-agi-to-superintelligence/",
-            "https://www.metaculus.com/questions/31817/h5-case-fatality-rate-in-us/",
+            "https://www.metaculus.com/questions/22427/number-of-new-leading-ai-labs/",  # Number of New Leading AI Labs - Multiple Choice
+            "https://www.metaculus.com/questions/21017/next-pope/",
+            "https://www.metaculus.com/questions/37321/who-will-be-the-2028-republican-nominee-for-president-of-the-united-states/"
+            "https://www.metaculus.com/questions/36460/number-of-times-starship-reaches-160km-in-2025/"
+            # "https://www.metaculus.com/questions/37151/george-santos-sentence-length/",
+            # "https://www.metaculus.com/questions/34751/home-battery-annual-frequency-imbalance-return/",
+            # "https://www.metaculus.com/questions/36881/medicaid-cut-over-10-years-in-2025-reconciliation-bill/",
+            # "https://www.metaculus.com/questions/26327/us-measles-outbreak-2025/",
+            # "https://www.metaculus.com/questions/605/global-warming-in-2100-over-1880-baseline/",
+            # "https://www.metaculus.com/questions/9062/time-from-weak-agi-to-superintelligence/",
+            # "https://www.metaculus.com/questions/31817/h5-case-fatality-rate-in-us/",
             
         ]
         template_bot.skip_previously_forecasted_questions = False
