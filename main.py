@@ -289,6 +289,8 @@ class TemplateForecaster(ForecastBot):
             - Like a good forecaster, you should use your own judgment to come to the most accurate forecast.
 
             The last thing you write is your final probabilities for the options in this order {question.options} as:
+
+            FINAL FORECASTS
             Option A: Probability A %
             Option B: Probability B %
             ...
