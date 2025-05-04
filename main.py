@@ -311,45 +311,6 @@ class TemplateForecaster(ForecastBot):
 
         print(f'<PREDICTION>{prediction}</PREDICTION>/n')
         
-        for p in prediction:
-            print(f'<PREDICT>{p}</PREDICT>/n')
-
-        ##########
-        def extract_probabilities(text):
-            """
-            Extract probability values from a text that contains a 'FINAL FORECAST' section
-            with options formatted as 'Option X: P%'.
-            
-            Args:
-                text (str): The input text containing the forecast section
-            
-            Returns:
-                list: A list of probability values as floats
-            """
-            # Find the FINAL FORECAST section
-            if "FINAL FORECAST" not in text:
-                return []
-            
-            forecast_section = text.split("FINAL FORECAST", 1)[1]
-            
-            # Extract all probabilities using regex
-            # This pattern looks for a number (possibly with decimal point)
-            # that appears between a colon and a percent sign
-            pattern = r':\s*(\d+(?:\.\d+)?)\s*%'
-            
-            # Find all matches
-            matches = re.findall(pattern, forecast_section)
-            
-            # Convert string matches to float
-            probabilities = [float(match) for match in matches]
-            
-            return probabilities
-        ##########
-
-        Tom_probs = extract_probabilities(reasoning)
-        print(f'<TOM>{Tom_probs}</TOM>')
-        print(f'<OPTS>{question.options}</OPTS>')
-        
         logger.info(
             f"Forecasted URL {question.page_url} as {prediction} with reasoning:\n{reasoning}"
         )
