@@ -291,10 +291,10 @@ class TemplateForecaster(ForecastBot):
             The last thing you write is your final probabilities for the options in this order {question.options} as:
 
             FINAL FORECASTS
-            [text of first option]: [Probability first option] %
-            [text of second option]: [Probability second option] %
+            Option [text of first option]: [Probability first option] %
+            Option [text of second option]: [Probability second option] %
             ...
-            [text of last option]: [Probability second option] %
+            Option [text of last option]: [Probability second option] %
 
             For [text of first option], replace it with the actual first option text from this list: {question.options}. 
             For [Probability first option], replace it with the probability of the first option.
