@@ -279,22 +279,26 @@ class TemplateForecaster(ForecastBot):
             - Pay close attention to the exact wording and resolution source in the resolution criteria. Sometimes newspaper articles will cite a number that is significantly different from the number in the resolution criteria. Make sure to pay attention to the resolution criteria.
             - Like a good forecaster, you should use your own judgment to come to the most accurate forecast.
 
-            The last thing you write is your final probabilities for the options in this order {question.options} as:
-            Option A: Probability A %
-            Option B: Probability B %
+            The last thing you write is your final probabilities for the N options in this order {question.options} as:
+            Option A: [Probability A] %
+            Option B: [Probability B] %
             ...
-            Option N: Probability N %
+            Option N: [Probability N] %
 
-            For each "Option X" in the list above, replace it with the actual option text from this list: {question.options}
+            Keep "Option A" exactly as above. Replace [Probability A] with the probability for the first option.
             Do not write any text after the percent sign for your probability of an option.
             """
         )
         reasoning = await self.get_llm("default", "llm").invoke(prompt)
         print(f'<REASONING> {reasoning} </REASONING>')
+
+        dummy_options = []
+        for i in question.options:
+            dummy_options.append('ZZZQQQ')
         
         prediction: PredictedOptionList = (
             PredictionExtractor.extract_option_list_with_percentage_afterwards(
-                reasoning, question.options
+                reasoning, dummy_options
             )
         )
 
