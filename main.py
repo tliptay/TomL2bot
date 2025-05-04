@@ -307,8 +307,10 @@ class TemplateForecaster(ForecastBot):
             )
         )
 
+        print(f'<PREDICTION>{prediction}</PREDICTION>/n')
+        
         for p in prediction:
-            print(f'{p}/n')
+            print(f'<PREDICT>{p}</PREDICT>/n')
         
         logger.info(
             f"Forecasted URL {question.page_url} as {prediction} with reasoning:\n{reasoning}"
