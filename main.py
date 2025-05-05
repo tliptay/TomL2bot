@@ -521,7 +521,6 @@ if __name__ == "__main__":
             
         ]
         template_bot.skip_previously_forecasted_questions = False
-        template_bot.predictions_per_research_report=1,
         questions = [
             MetaculusApi.get_question_by_url(question_url)
             for question_url in EXAMPLE_QUESTIONS
