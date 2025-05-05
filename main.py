@@ -218,15 +218,21 @@ class TemplateForecaster(ForecastBot):
             - Put extra weight on the status quo outcome since the world changes slowly most of the time.
             - Think about if there are seasonal effects.
             - Think about what the current trend is and if it makes sense to extrapolate, or not. Some things like stock prices are effectively random walks, so recent trends likely don't matter.
-            - Even if something seems impossible, never forecast less than 5%. (It is possible that you don't have all of the information, or have misunderstood something.)
-            - Even if something seems certain, never forecast more than 95%. (It is possible that you don't have all of the information, or have misunderstood something.)
+            - Even if something seems impossible, never forecast less than 3%. (It is possible that you don't have all of the information, or have misunderstood something.)
+            - Even if something seems certain, never forecast more than 97%. (It is possible that you don't have all of the information, or have misunderstood something.)
             - Pay close attention to the exact wording and resolution source in the resolution criteria. Sometimes newspaper articles will cite a number that is significantly different from the number in the resolution criteria. Make sure to pay attention to the resolution criteria.
             - Like a good forecaster, you should use your own judgment to come to the most accurate forecast!
 
             Before answering you write:
             (a) The time left until the outcome to the question is known.
             (b) The status quo outcome if nothing changed.
-            (c) Scope Sensitivity Analysis. Think about the scope of the question. For example, imagine you are asked: Will a company declare bankruptcy in the next 3 months? It can be useful to first ask yourself: Will the company declare bankruptcy in the 12 months? This helps to ensure logical consistency. If you forecast 40% in 12 months, then you might forecast 10% in 3 months to be scope sensitive.
+            (c) Scope Sensitivity Analysis. Think about the scope of the question. 
+                For example, imagine you are asked: Will a company declare bankruptcy in the next 3 months? 
+                It can be useful to first ask yourself: Will the company declare bankruptcy in the 12 months? 
+                This helps to ensure logical consistency. 
+                If you forecast 40% in 12 months, then you might forecast 10% in 3 months to be scope sensitive.
+                However, it is also possible that the bankruptcy risk is in the near term, so it could still be 25%.
+                You will need to use your judgment, but considering scope sensitivity is important.
             (d) A brief description of a scenario that results in a No outcome.
             (e) A brief description of a scenario that results in a Yes outcome.
             
