@@ -226,8 +226,9 @@ class TemplateForecaster(ForecastBot):
             Before answering you write:
             (a) The time left until the outcome to the question is known.
             (b) The status quo outcome if nothing changed.
-            (c) A brief description of a scenario that results in a No outcome.
-            (d) A brief description of a scenario that results in a Yes outcome.
+            (c) Scope Sensitivity Analysis. Think about the scope of the question. For example, imagine you are asked: Will a company declare bankruptcy in the next 3 months? It can be useful to first ask yourself: Will the company declare bankruptcy in the 12 months? This helps to ensure logical consistency. If you forecast 40% in 12 months, then you might forecast 10% in 3 months to be scope sensitive.
+            (d) A brief description of a scenario that results in a No outcome.
+            (e) A brief description of a scenario that results in a Yes outcome.
             
             The last thing you write is your final answer as: "Probability: ZZ%", 0-100
             """
