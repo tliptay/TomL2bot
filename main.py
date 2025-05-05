@@ -290,23 +290,29 @@ class TemplateForecaster(ForecastBot):
 
             The last thing you write is your final probabilities for the options in this order {question.options} as:
 
-            FINAL FORECASTS
-            Option [text of first option]: [Probability first option] %
-            Option [text of second option]: [Probability second option] %
+            FINAL FORECAST
+            [text of first option]: [Probability of first option] %
+            [text of second option]: [Probability of second option] %
             ...
-            Option [text of last option]: [Probability second option] %
+            [text of last option]: [Probability of last option] %
 
-            For [text of first option], replace it with the actual text from this list: {question.options}. Do not include quotation marks.
+            For [text of first option], replace it with the actual text from this list: {question.options}.
             For [Probability first option], replace it with the probability of the first option. It should be an integer 1-99.
             Do not write any text after the percent sign for your probability of an option.
             """
         )
         reasoning = await self.get_llm("default", "llm").invoke(prompt)
         print(f'<REASONING> {reasoning} </REASONING>')
+
+        reasoning_forecast_only = ""
+        if "FINAL FORECAST" in reasoning:
+            reasoning_forecast_only = reasoning.split("FINAL FORECAST", 1)[1]
+
+        print(f'<FINAL>{reasoning_forecast_only}</FINAL>')
         
         prediction: PredictedOptionList = (
             PredictionExtractor.extract_option_list_with_percentage_afterwards(
-                reasoning, question.options
+                reasoning_forecast_only, question.options
             )
         )
 
