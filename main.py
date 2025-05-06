@@ -394,20 +394,28 @@ class TemplateForecaster(ForecastBot):
             - Only use the word "Percentile" in your final answer.
 
             The last thing you write is your final answer as:
-            "
+            
+            FINAL FORECAST:
             Percentile 10: XX
             Percentile 20: XX
             Percentile 40: XX
             Percentile 60: XX
             Percentile 80: XX
             Percentile 90: XX
-            "
+            
             """
         )
         reasoning = await self.get_llm("default", "llm").invoke(prompt)
+        
+        reasoning_forecast_only = ""
+        if "FINAL FORECAST" in reasoning:
+            reasoning_forecast_only = reasoning.split("FINAL FORECAST", 1)[1]
+
+        print(f'<FINAL>{reasoning_forecast_only}</FINAL>')
+        
         prediction: NumericDistribution = (
             PredictionExtractor.extract_numeric_distribution_from_list_of_percentile_number_and_probability(
-                reasoning, question
+                reasoning_forecast_only, question
             )
         )
         logger.info(
