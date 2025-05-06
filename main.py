@@ -395,7 +395,7 @@ class TemplateForecaster(ForecastBot):
 
             The last thing you write is your final answer as:
             
-            FINAL FORECAST:
+            FINAL FORECAST
             Percentile 10: XX
             Percentile 20: XX
             Percentile 40: XX
