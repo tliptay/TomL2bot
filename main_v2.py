@@ -207,20 +207,49 @@ class TemplateForecaster(ForecastBot):
 
             Today is {datetime.now().strftime("%Y-%m-%d")}.
 
-            Tips from good forecasters:
-            - If an event has been anticipated to occur in 3 months, but 2.5 months have gone by and it still hasn't happened yet and there is no recent news within the last week, then you should be skeptical that it will happen on the stated timeframe. It probably means that it will be delayed, or plans have changed.
-            - Think about the base rates for similar events in the past.
-            - Put extra weight on the status quo outcome since the world changes slowly most of the time.
-            - Even if something seems impossible, never forecast less than 5%. (It is possible that you don't have all of the information, or have misunderstood something.)
-            - Even if something seems certain, never forecast more than 95%. (It is possible that you don't have all of the information, or have misunderstood something.)
+
+            Here are top tips from good forecasters:
+
+            (1) If an event was anticipated to happen in a certain timeframe, but 80% of that time has passed and there is no recent news or updates about it happening soon, then you should be skeptical that it will happen on the originally stated timeframe. It probably means that it will be delayed or plans have changed. Some examples:
+            If Elon Musk says definitely that robotaxis will be available in 1 year, but after 11 months there have not been any specific public updates confirming that robotaxis will be available then it is highly unlikely to happen in the remaining month.
+            If Donald Trump says that he will definitely have a deal signed in 90 days, but 70 days have passed without updates on the progress, then it is highly unlikely there will be a deal in the remaining 20 days.
+            
+            (2) Think about base rates for similar events in the past. Sometimes a base rate is the best you can do, if you can’t find much information about the question. Example questions where the base rate is a particularly good starting point include:
+            Will the temperature in Miami exceed 100 degrees next month?
+            Will there be an earthquake of magnitude 5 or more in San Francisco in 2026?
+            
+            (3) Sometimes finding a good base rate is difficult, especially when the events are relatively unique. In these cases, you need to put more weight on the “inside view” which means weighing considerations that appear specific to the situation that lead to a very different forecast than base rates would dictate. You will need to use your own judgment.
+            
+            (4) Put extra weight on the status quo outcome since the world changes slowly most of the time. This is especially true when coordination or agreement between people or organizations is required. For example, signing multi-national treaties and passing legislation often take longer than one might imagine from reading the news.
+            
+            (5) Think about if there are seasonal effects. For example, the sales of homes or travel are likely to have seasonal patterns.
+            
+            (6) Think about what the current trend is and if it makes sense to extrapolate, or not. Some things like stock prices are effectively random walks, so recent trends likely don't matter. Other trends have momentum, like the number of COVID cases from day to day.
+            
+            (7) Think about the scope of the question.
+            
+            (8) Think about the incentives and power of any influential people involved in the situation. For example, Putin has the power to single-handedly dictate Russian military or diplomatic response.
+
+            (9) Sometimes there are multiple data sources for the same number that have very different values. For example, Trading Economics reports 1.84B UAH for Ukrainian debt while the IMF reports a value of 7B UAH. These are both reputable sources, but they are using different definitions in their reporting. It is important to focus on the source used in the resolution criteria.
+            
+            (10) Pre-mortem. Think about how you are most likely to be wrong. Imagine that you are writing a letter to your future self that you will open and read once the outcome is known. In the letter you try to explain to your future self the most likely way that your forecast will be deemed to be a poor forecast. Are you most worried about missing a key piece of information? What is the biggest uncertainty and would keep you awake at night?
+
+            (11) More general advice:
+            - Even if something seems impossible, never forecast less than 3%. (It is possible that you don't have all of the information, or have misunderstood something.)
+            - Even if something seems certain, never forecast more than 97%. (It is possible that you don't have all of the information, or have misunderstood something.)
             - Pay close attention to the exact wording and resolution source in the resolution criteria. Sometimes newspaper articles will cite a number that is significantly different from the number in the resolution criteria. Make sure to pay attention to the resolution criteria.
-            - Like a good forecaster, you should use your own judgment to come to the most accurate forecast!
+            - There are exceptions to all of the above tips. And, sometimes the tips lead you in conflicting directions, so don't take them too strictly.
+            - Like a good forecaster, you should use your own judgment to come to the most accurate forecast! 
 
             Before answering you write:
             (a) The time left until the outcome to the question is known.
             (b) The status quo outcome if nothing changed.
-            (c) A brief description of a scenario that results in a No outcome.
-            (d) A brief description of a scenario that results in a Yes outcome.
+            (c) Think about answering the question with different scopes to help ensure that you have a self consistent view and have considered the broader context. 
+                For example, imagine the question is: Will a company declare bankruptcy in the next 3 months? It can be useful to force yourself to forecast the probability of bankruptcy over the next 1 year, 2 years, and 5 years. Doing this in a self-consistent way helps to force you to consider the scope explicitly.
+                If you forecast 40% in 12 months, then you might forecast 10% in 3 months to be scope sensitive. However, it is also possible that the bankruptcy risk is higher in the near term, so it could still be 25%.
+                You will need to use your judgment. Being scope insensitive is a common cognitive bias and this exercise is meant to help combat this bias by forcing you to explicitly consider the question’s scope.
+            (d) A brief description of a scenario that results in a No outcome.
+            (e) A brief description of a scenario that results in a Yes outcome.
             
             The last thing you write is your final answer as: "Probability: ZZ%", 0-100
             """
