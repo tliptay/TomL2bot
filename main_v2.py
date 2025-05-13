@@ -517,10 +517,12 @@ if __name__ == "__main__":
     elif run_mode == "test_questions":
         # Example questions are a good way to test the bot's performance on a single question
         EXAMPLE_QUESTIONS = [
-            # "https://www.metaculus.com/questions/578/human-extinction-by-2100/",  # Human Extinction - Binary
+            "https://www.metaculus.com/questions/578/human-extinction-by-2100/",  # Human Extinction - Binary
+            "https://www.metaculus.com/questions/37115/will-scotus-agree-to-hear-monsanto-v-durnell-before-january-15-2026/",
+            "https://www.metaculus.com/questions/37328/india-pakistan-conflict-with-100-deaths-in-mayjune-2025/",
+            "https://www.metaculus.com/questions/37690/2025-us-shrimp-imports-2024/",
             # "https://www.metaculus.com/questions/14333/age-of-oldest-human-as-of-2100/",  # Age of Oldest Human - Numeric
             # "https://www.metaculus.com/questions/22427/number-of-new-leading-ai-labs/",  # Number of New Leading AI Labs - Multiple Choice
-            # "https://www.metaculus.com/questions/21017/next-pope/",
             # "https://www.metaculus.com/questions/37151/george-santos-sentence-length/",
             # "https://www.metaculus.com/questions/22008/average-us-measles-cases-2025-through-2030/",
             # "https://www.metaculus.com/questions/36295/us-tariff-rate-on-goods-imported-into-us-at-yearend-2026/",
