@@ -226,13 +226,10 @@ class TemplateForecaster(ForecastBot):
             Before answering you write:
             (a) The time left until the outcome to the question is known.
             (b) The status quo outcome if nothing changed.
-            (c) Scope Sensitivity Analysis. Think about the scope of the question. 
-                For example, imagine you are asked: Will a company declare bankruptcy in the next 3 months? 
-                It can be useful to first ask yourself: Will the company declare bankruptcy in the 12 months? 
-                This helps to ensure logical consistency. 
-                If you forecast 40% in 12 months, then you might forecast 10% in 3 months to be scope sensitive.
-                However, it is also possible that the bankruptcy risk is in the near term, so it could still be 25%.
-                You will need to use your judgment, but considering scope sensitivity is important.
+            (c) Think about answering the question with different scopes to help ensure that you have a self consistent view and have considered the broader context. 
+                For example, imagine the question is: Will a company declare bankruptcy in the next 3 months? It can be useful to force yourself to forecast the probability of bankruptcy over the next 1 year, 2 years, and 5 years. Doing this in a self-consistent way helps to force you to consider the scope explicitly.
+                If you forecast 40% in 12 months, then you might forecast 10% in 3 months to be scope sensitive. However, it is also possible that the bankruptcy risk is higher in the near term, so it could still be 25%.
+                You will need to use your judgment. Being scope insensitive is a common cognitive bias and this exercise is meant to help combat this bias by forcing you to explicitly consider the question’s scope.
             (d) A brief description of a scenario that results in a No outcome.
             (e) A brief description of a scenario that results in a Yes outcome.
             
