@@ -517,10 +517,14 @@ if __name__ == "__main__":
     elif run_mode == "test_questions":
         # Example questions are a good way to test the bot's performance on a single question
         EXAMPLE_QUESTIONS = [
-            "https://www.metaculus.com/questions/578/human-extinction-by-2100/",  # Human Extinction - Binary
-            "https://www.metaculus.com/questions/37115/will-scotus-agree-to-hear-monsanto-v-durnell-before-january-15-2026/",
+            #"https://www.metaculus.com/questions/578/human-extinction-by-2100/",  # Human Extinction - Binary
+            #"https://www.metaculus.com/questions/37115/will-scotus-agree-to-hear-monsanto-v-durnell-before-january-15-2026/",
             "https://www.metaculus.com/questions/37328/india-pakistan-conflict-with-100-deaths-in-mayjune-2025/",
-            "https://www.metaculus.com/questions/37690/2025-us-shrimp-imports-2024/",
+            #"https://www.metaculus.com/questions/37690/2025-us-shrimp-imports-2024/",
+            "https://www.metaculus.com/questions/36399/revolut-fully-fledged-uk-banking-licence-before-july-26-2025/",
+            "https://www.metaculus.com/questions/37112/us-iran-nuclear-deal-before-sep-2025/",
+            "https://www.metaculus.com/questions/36402/fridtjof-nansen-class-replacement-decision-before-sep-2025/",
+            "https://www.metaculus.com/questions/36902/inquiry-over-tariff-insider-trading-before-sep-2025/",
             # "https://www.metaculus.com/questions/14333/age-of-oldest-human-as-of-2100/",  # Age of Oldest Human - Numeric
             # "https://www.metaculus.com/questions/22427/number-of-new-leading-ai-labs/",  # Number of New Leading AI Labs - Multiple Choice
             # "https://www.metaculus.com/questions/37151/george-santos-sentence-length/",
@@ -534,7 +538,7 @@ if __name__ == "__main__":
             # "https://www.metaculus.com/questions/605/global-warming-in-2100-over-1880-baseline/",
             # "https://www.metaculus.com/questions/9062/time-from-weak-agi-to-superintelligence/",
             # "https://www.metaculus.com/questions/31817/h5-case-fatality-rate-in-us/",
-            "https://www.metaculus.com/questions/36460/number-of-times-starship-reaches-160km-in-2025/",
+            #"https://www.metaculus.com/questions/36460/number-of-times-starship-reaches-160km-in-2025/",
             
         ]
         template_bot.skip_previously_forecasted_questions = False
