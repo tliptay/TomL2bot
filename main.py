@@ -198,7 +198,7 @@ class TemplateForecaster(ForecastBot):
             model=self.get_llm("default", "llm"),
             temperature=0,
             num_searches_to_run=2,
-            num_sites_per_search=10,
+            num_sites_per_search=3, # originally 10
         )
         prompt = clean_indents(
             f"""
