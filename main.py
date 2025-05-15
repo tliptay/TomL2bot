@@ -73,10 +73,10 @@ class TemplateForecaster(ForecastBot):
                     question.question_text
                 )         
             
-            if os.getenv("EXA_API_KEY"):
-                research_exa = await self._call_exa_smart_searcher(
-                    question.question_text
-                )
+            #if os.getenv("EXA_API_KEY"):
+            #    research_exa = await self._call_exa_smart_searcher(
+            #        question.question_text
+            #    )
                 
             #elif os.getenv("PERPLEXITY_API_KEY"):
             #    research = await self._call_perplexity(question.question_text)
@@ -97,7 +97,7 @@ class TemplateForecaster(ForecastBot):
                 )
                 research = ""
 
-            research = research_asknews + "\n\n" + research_exa + "\n\n" + research_perplexity + "\n\n" + research_metaculus + "\n\n" + research_resolution_criteria
+            research = research_asknews + "\n\n" + research_perplexity + "\n\n" + research_metaculus + "\n\n" + research_resolution_criteria
             
             logger.info(
                 f"Found Research for URL {question.page_url}:\n{research}"
