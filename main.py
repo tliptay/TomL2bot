@@ -76,7 +76,7 @@ class TemplateForecaster(ForecastBot):
             
             if os.getenv("EXA_API_KEY"):
                 research_exa = await self._call_exa_smart_searcher(
-                    question.question_text
+                    question.resolution_criteria, question.question_text
                 )
                 
             #elif os.getenv("PERPLEXITY_API_KEY"):
@@ -190,7 +190,7 @@ class TemplateForecaster(ForecastBot):
         
         return response
 
-    async def _call_exa_smart_searcher(self, question: str) -> str:
+    async def _call_exa_smart_searcher(self, resolution_criteria: str, question: str) -> str:
         """
         SmartSearcher is a custom class that is a wrapper around an search on Exa.ai
         """
@@ -202,26 +202,18 @@ class TemplateForecaster(ForecastBot):
         )
         prompt = clean_indents(
             f"""
-            You are an assistant to a superforecaster. 
-            The superforecaster will give you a question they intend to forecast on. 
-            To be a great assistant, you generate a concise but detailed rundown of the most relevant news and information sources for helping them research the question. 
-            When possible, try to get a diverse range of perspectives if the question is controversial. 
-            Use your judgment in deciding the most relevant information. 
-            You do not produce forecasts yourself - you are responsible for retrieving relevant information for the superforecaster.
-
-            The question is:
+            You are a research assistant.
+            
+            Provide any information found from URLs listed in the text below that might be relevant for answering this question:
             {question}
+
+            Only provide information directly from any URLs from the text:
+            
+            <text>
+            {resolution_criteria}
+            </text>
             """
         )
-        #prompt = (
-        #    "You are an assistant to a superforecaster." 
-        #    "The superforecaster will give you a question they intend to forecast on." 
-        #    "To be a great assistant, you generate a concise but detailed rundown of the most relevant news and information sources for helping them research the question." 
-        #    "When possible, try to get a diverse range of perspectives if the question is controversial." 
-        #    "Use your judgment in deciding the most relevant information." 
-        #    "You do not produce forecasts yourself - you are responsible for retrieving relevant information for the superforecaster."
-        #    f"\n\nThe question is: {question}"
-        #)  # You can ask the searcher to filter by date, exclude/include a domain, and run specific searches for finding sources vs finding highlights within a source
         response = await searcher.invoke(prompt)
         return response
     
