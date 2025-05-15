@@ -67,16 +67,17 @@ class TemplateForecaster(ForecastBot):
             research_metaculus = ""
             research_resolution_criteria = ""
             research_asknews = ""
+            research_exa = ""
             
             if os.getenv("ASKNEWS_CLIENT_ID") and os.getenv("ASKNEWS_SECRET"):
                 research_asknews = await AskNewsSearcher().get_formatted_news_async(
                     question.question_text
                 )         
             
-            #if os.getenv("EXA_API_KEY"):
-            #    research_exa = await self._call_exa_smart_searcher(
-            #        question.question_text
-            #    )
+            if os.getenv("EXA_API_KEY"):
+                research_exa = await self._call_exa_smart_searcher(
+                    question.question_text
+                )
                 
             #elif os.getenv("PERPLEXITY_API_KEY"):
             #    research = await self._call_perplexity(question.question_text)
@@ -97,7 +98,7 @@ class TemplateForecaster(ForecastBot):
                 )
                 research = ""
 
-            research = research_asknews + "\n\n" + research_perplexity + "\n\n" + research_metaculus + "\n\n" + research_resolution_criteria
+            research = research_asknews + "\n\n" + research_exa + "\n\n" + research_perplexity + "\n\n" + research_metaculus + "\n\n" + research_resolution_criteria
             
             logger.info(
                 f"Found Research for URL {question.page_url}:\n{research}"
@@ -199,15 +200,28 @@ class TemplateForecaster(ForecastBot):
             num_searches_to_run=2,
             num_sites_per_search=10,
         )
-        prompt = (
-            "You are an assistant to a superforecaster." 
-            "The superforecaster will give you a question they intend to forecast on." 
-            "To be a great assistant, you generate a concise but detailed rundown of the most relevant news and information sources for helping them research the question." 
-            "When possible, try to get a diverse range of perspectives if the question is controversial." 
-            "Use your judgment in deciding the most relevant information." 
-            "You do not produce forecasts yourself - you are responsible for retrieving relevant information for the superforecaster."
-            f"\n\nThe question is: {question}"
-        )  # You can ask the searcher to filter by date, exclude/include a domain, and run specific searches for finding sources vs finding highlights within a source
+        prompt = clean_indents(
+            f"""
+            You are an assistant to a superforecaster. 
+            The superforecaster will give you a question they intend to forecast on. 
+            To be a great assistant, you generate a concise but detailed rundown of the most relevant news and information sources for helping them research the question. 
+            When possible, try to get a diverse range of perspectives if the question is controversial. 
+            Use your judgment in deciding the most relevant information. 
+            You do not produce forecasts yourself - you are responsible for retrieving relevant information for the superforecaster.
+
+            The question is:
+            {question}
+            """
+        )
+        #prompt = (
+        #    "You are an assistant to a superforecaster." 
+        #    "The superforecaster will give you a question they intend to forecast on." 
+        #    "To be a great assistant, you generate a concise but detailed rundown of the most relevant news and information sources for helping them research the question." 
+        #    "When possible, try to get a diverse range of perspectives if the question is controversial." 
+        #    "Use your judgment in deciding the most relevant information." 
+        #    "You do not produce forecasts yourself - you are responsible for retrieving relevant information for the superforecaster."
+        #    f"\n\nThe question is: {question}"
+        #)  # You can ask the searcher to filter by date, exclude/include a domain, and run specific searches for finding sources vs finding highlights within a source
         response = await searcher.invoke(prompt)
         return response
     
