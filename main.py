@@ -75,9 +75,10 @@ class TemplateForecaster(ForecastBot):
                 )         
             
             if os.getenv("EXA_API_KEY"):
-                research_exa = await self._call_exa_smart_searcher(
-                    question.resolution_criteria, question.question_text
-                )
+                #research_exa = await self._call_exa_smart_searcher(
+                #    question.resolution_criteria, question.question_text
+                #)
+                pass
                 
             #elif os.getenv("PERPLEXITY_API_KEY"):
             #    research = await self._call_perplexity(question.question_text)
@@ -86,9 +87,9 @@ class TemplateForecaster(ForecastBot):
                 research_perplexity = await self._call_perplexity(
                     question.question_text, use_open_router=True
                 )
-                research_metaculus = await self._call_perplexity_metaculus(
-                    question.question_text, use_open_router=True
-                )
+                #research_metaculus = await self._call_perplexity_metaculus(
+                #    question.question_text, use_open_router=True
+                #)
                 research_resolution_criteria = await self._call_perplexity_resolution_criteria(
                     question.resolution_criteria, question.question_text, use_open_router=True
                 )
